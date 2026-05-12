@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Ethics & Governance Policy – Template-Variablen",
+  "description": "Schema aller Platzhalter, die im AI-Policy-Template.md verwendet werden. Dient als Single Source of Truth für das Eingabe-Formular im AIMS Starter Kit Wizard.",
+  "type": "object",
+  "x-groups": [
+    { "id": "company",     "title": "Unternehmens-Stammdaten",      "description": "Grunddaten Ihres Unternehmens für Identifikation und Rechtsbezug." },
+    { "id": "governance",  "title": "Governance & Rollen",          "description": "Personen, die die Verantwortung für das AI-Management-System tragen." },
+    { "id": "scope",       "title": "Anwendungsbereich",            "description": "Welche KI-Anwendungen, Regionen und Risikoklassen abgedeckt werden." },
+    { "id": "operations",  "title": "Operative Parameter",          "description": "Konkrete Fristen, Speicherorte und Kommunikationskanäle." },
+    { "id": "metadata",    "title": "Dokument-Metadaten",           "description": "Versionierung, Datum und Reviewzyklus dieses Policy-Dokuments." }
+  ],
+  "required": [
+    "Unternehmensname",
+    "KIZweck",
+    "GeschäftsführerName",
+    "AIOfficerName",
+    "Risikoklasse",
+    "Inkrafttreten",
+    "Version"
+  ],
+  "properties": {
+    "Unternehmensname": {
+      "type": "string",
+      "title": "Unternehmensname (inkl. Rechtsform)",
+      "description": "Vollständige rechtliche Bezeichnung, z. B. „ACME Robotics GmbH".",
+      "minLength": 2,
+      "x-group": "company",
+      "x-example": "ACME Robotics GmbH"
+    },
+    "KIZweck": {
+      "type": "string",
+      "title": "Primärer KI-Zweck",
+      "description": "Ein bis zwei Sätze, was Ihr Unternehmen mit KI erreichen will.",
+      "minLength": 10,
+      "x-group": "company",
+      "x-input": "textarea",
+      "x-example": "Wir entwickeln eine generative KI-Plattform für automatisierte Kundenservice-Kommunikation in regulierten Branchen."
+    },
+    "Ort": {
+      "type": "string",
+      "title": "Hauptsitz (Ort)",
+      "description": "Stadt, in der diese Policy unterzeichnet wird.",
+      "x-group": "company",
+      "x-example": "Berlin"
+    },
+    "GeografischerGeltungsbereich": {
+      "type": "string",
+      "title": "Geografischer Geltungsbereich",
+      "description": "In welchen Regionen wird die Policy angewendet?",
+      "default": "Europäische Union und Europäischer Wirtschaftsraum",
+      "x-group": "scope",
+      "x-example": "EU/EWR sowie das Vereinigte Königreich"
+    },
+
+    "GeschäftsführerName": {
+      "type": "string",
+      "title": "Geschäftsführung / CEO",
+      "description": "Vor- und Nachname der unterzeichnenden Geschäftsleitung.",
+      "x-group": "governance",
+      "x-example": "Dr. Anna Schmidt"
+    },
+    "AIOfficerName": {
+      "type": "string",
+      "title": "AI Officer",
+      "description": "Vor- und Nachname der operativ für KI verantwortlichen Person. Kann bei kleinen Teams in Personalunion mit CTO/CPO ausgeübt werden.",
+      "x-group": "governance",
+      "x-example": "Marc Hoffmann"
+    },
+    "DPOName": {
+      "type": "string",
+      "title": "Datenschutzbeauftragte:r",
+      "description": "Name der oder des Datenschutzbeauftragten. Bei externer Bestellung Kanzlei-/Firmenname zulässig.",
+      "x-group": "governance",
+      "x-example": "Jasmin Weber (extern, datenschutz-extern.de)"
+    },
+    "DPOEmail": {
+      "type": "string",
+      "format": "email",
+      "title": "Datenschutz-Kontakt-E-Mail",
+      "x-group": "governance",
+      "x-example": "datenschutz@acme-robotics.com"
+    },
+    "ISONName": {
+      "type": "string",
+      "title": "Information Security Officer",
+      "description": "Verantwortlich für Cybersicherheit der KI-Infrastruktur. Bei kleinen Teams oft = CTO.",
+      "x-group": "governance",
+      "x-example": "Tom Becker (CTO)"
+    },
+    "KontaktEmail": {
+      "type": "string",
+      "format": "email",
+      "title": "Allgemeiner Kontakt für KI-Anfragen",
+      "description": "Adresse, an die Betroffene Beschwerden oder Auskunftsersuchen richten können.",
+      "x-group": "governance",
+      "x-example": "ai-policy@acme-robotics.com"
+    },
+
+    "AnwendungsfälleListe": {
+      "type": "string",
+      "title": "Anwendungsfälle",
+      "description": "Aufzählung Ihrer wesentlichen KI-Anwendungsfälle. Pro Fall eine Zeile, beginnend mit „– ".",
+      "minLength": 5,
+      "x-group": "scope",
+      "x-input": "textarea",
+      "x-example": "– Generative Chatbot-Antworten im First-Level-Support\n– Predictive Lead Scoring auf historischen CRM-Daten\n– Automatische Kategorisierung eingehender Support-Tickets"
+    },
+    "Risikoklasse": {
+      "type": "string",
+      "title": "Höchste Risikoklasse Ihrer KI-Systeme",
+      "description": "Klassifikation gemäß Artikel 6 ff. EU AI Act. Bei mehreren Systemen die jeweils höchste Klasse angeben.",
+      "enum": ["minimales Risiko", "begrenztes Risiko mit Transparenzpflicht", "hohes Risiko", "kein Hochrisiko-Einsatz, aber Transparenz-Anforderungen"],
+      "default": "begrenztes Risiko mit Transparenzpflicht",
+      "x-group": "scope"
+    },
+    "InterneVerbote": {
+      "type": "string",
+      "title": "Zusätzlich intern untersagte Anwendungsfälle",
+      "description": "Welche KI-Einsätze schließen Sie über die gesetzlichen Verbote hinaus aus? Beginnen Sie jeden Eintrag mit „– ".",
+      "x-group": "scope",
+      "x-input": "textarea",
+      "default": "– Bewertung individueller Mitarbeiter-Leistung allein auf KI-Basis\n– Vollständig autonome Entscheidungen über Vertragsabschlüsse mit Endkunden\n– Generative Erstellung politischer oder gesundheitsbezogener Inhalte ohne menschliche Freigabe"
+    },
+    "ExterneKIAnbieter": {
+      "type": "string",
+      "title": "Wesentliche externe KI-Anbieter",
+      "description": "Kommagetrennte Liste der von Ihnen eingesetzten Foundation-Model- oder KI-Dienste-Anbieter.",
+      "x-group": "scope",
+      "x-example": "OpenAI, Anthropic, Hugging Face, AWS Bedrock"
+    },
+
+    "HostingRegion": {
+      "type": "string",
+      "title": "Hosting-Region",
+      "description": "Region(en), in denen Ihre KI-Workloads laufen.",
+      "default": "Europäische Union",
+      "x-group": "operations"
+    },
+    "DatenRetention": {
+      "type": "string",
+      "title": "Standard-Aufbewahrungsfrist personenbezogener Daten",
+      "default": "12 Monate nach Erreichen des Verarbeitungszwecks",
+      "x-group": "operations"
+    },
+    "RetentionZeitraum": {
+      "type": "string",
+      "title": "Aufbewahrungsfrist für Entscheidungs-Dokumentation",
+      "default": "5 Jahre",
+      "x-group": "operations"
+    },
+    "AssessmentFrequenz": {
+      "type": "string",
+      "title": "Frequenz der wiederkehrenden Impact Assessments",
+      "enum": ["6 Monaten", "12 Monaten", "24 Monaten"],
+      "default": "12 Monaten",
+      "x-group": "operations"
+    },
+    "AssessmentSpeicherort": {
+      "type": "string",
+      "title": "Speicherort der Impact Assessments",
+      "default": "/assessments im internen GitHub-Repository",
+      "x-group": "operations"
+    },
+    "MeldekanalIntern": {
+      "type": "string",
+      "title": "Interner Meldekanal für KI-Bedenken",
+      "default": "#ai-concerns in Slack oder direkt an den AI Officer",
+      "x-group": "operations"
+    },
+    "KommunikationskanalIntern": {
+      "type": "string",
+      "title": "Interner Kanal zur Policy-Veröffentlichung",
+      "default": "Confluence und das HR-Onboarding-Portal",
+      "x-group": "operations"
+    },
+    "VeröffentlichungsortExtern": {
+      "type": "string",
+      "title": "Externer Veröffentlichungsort",
+      "description": "URL, unter der die Policy für externe Stakeholder verfügbar ist.",
+      "default": "https://www.beispiel.com/ai-policy",
+      "x-group": "operations"
+    },
+
+    "Version": {
+      "type": "string",
+      "title": "Versionsnummer",
+      "description": "Semantische Versionierung empfohlen, z. B. „1.0".",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
+      "default": "1.0",
+      "x-group": "metadata"
+    },
+    "Inkrafttreten": {
+      "type": "string",
+      "format": "date",
+      "title": "Inkrafttreten",
+      "description": "Datum der Unterzeichnung und des Inkrafttretens dieser Policy.",
+      "x-group": "metadata"
+    },
+    "NächsterReview": {
+      "type": "string",
+      "format": "date",
+      "title": "Nächste planmäßige Überprüfung",
+      "description": "Wird vom Tool automatisch aus Inkrafttreten + ReviewFrequenz berechnet.",
+      "x-group": "metadata",
+      "x-computed": true
+    },
+    "ReviewFrequenz": {
+      "type": "string",
+      "title": "Review-Zyklus dieser Policy",
+      "enum": ["jährlich", "halbjährlich", "alle 18 Monate", "alle 24 Monate"],
+      "default": "jährlich",
+      "x-group": "metadata"
+    }
+  }
+}
