@@ -12,7 +12,16 @@ export const ctx = {
 async function fetchJson(path) {
   const r = await fetch(path, { cache: 'no-store' });
   if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
-  return r.json();
+  // Read as text so we can strip a possible UTF-8 BOM (﻿) before parsing.
+  // GitHub Pages and some editors occasionally introduce one; native r.json()
+  // would fail on it without a useful error message.
+  let text = await r.text();
+  if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    throw new Error(`${path}: JSON parse failed - ${e.message}`);
+  }
 }
 
 async function fetchText(path) {

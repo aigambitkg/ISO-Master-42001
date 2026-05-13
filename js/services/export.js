@@ -75,6 +75,9 @@ export async function buildExportZip(state) {
   // --- .gitignore ---
   zip.file('.gitignore', `# Local notes\n*.local.md\nnode_modules/\n.DS_Store\n`);
 
+  // --- .nojekyll (disables Jekyll on GitHub Pages so files/folders with `_` prefix are served) ---
+  zip.file('.nojekyll', '');
+
   // Generate
   const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
   return blob;
