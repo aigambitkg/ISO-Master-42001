@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "AI Ethics & Governance Policy – Template-Variablen",
-  "description": "Schema aller Platzhalter, die im AI-Policy-Template.md verwendet werden. Dient als Single Source of Truth für das Eingabe-Formular im AIMS Starter Kit Wizard.",
+  "title": "AI Ethics & Governance Policy - Template-Variablen",
+  "description": "Schema aller Platzhalter, die im AI-Policy-Template.md verwendet werden. Dient als Single Source of Truth fuer das Eingabe-Formular im AIMS Starter Kit Wizard.",
   "type": "object",
   "x-groups": [
-    { "id": "company",     "title": "Unternehmens-Stammdaten",      "description": "Grunddaten Ihres Unternehmens für Identifikation und Rechtsbezug." },
-    { "id": "governance",  "title": "Governance & Rollen",          "description": "Personen, die die Verantwortung für das AI-Management-System tragen." },
+    { "id": "company",     "title": "Unternehmens-Stammdaten",      "description": "Grunddaten Ihres Unternehmens fuer Identifikation und Rechtsbezug." },
+    { "id": "governance",  "title": "Governance & Rollen",          "description": "Personen, die die Verantwortung fuer das AI-Management-System tragen." },
     { "id": "scope",       "title": "Anwendungsbereich",            "description": "Welche KI-Anwendungen, Regionen und Risikoklassen abgedeckt werden." },
-    { "id": "operations",  "title": "Operative Parameter",          "description": "Konkrete Fristen, Speicherorte und Kommunikationskanäle." },
+    { "id": "operations",  "title": "Operative Parameter",          "description": "Konkrete Fristen, Speicherorte und Kommunikationskanaele." },
     { "id": "metadata",    "title": "Dokument-Metadaten",           "description": "Versionierung, Datum und Reviewzyklus dieses Policy-Dokuments." }
   ],
   "required": [
@@ -23,19 +23,19 @@
     "Unternehmensname": {
       "type": "string",
       "title": "Unternehmensname (inkl. Rechtsform)",
-      "description": "Vollständige rechtliche Bezeichnung, z. B. „ACME Robotics GmbH".",
+      "description": "Vollstaendige rechtliche Bezeichnung, z. B. 'ACME Robotics GmbH'.",
       "minLength": 2,
       "x-group": "company",
       "x-example": "ACME Robotics GmbH"
     },
     "KIZweck": {
       "type": "string",
-      "title": "Primärer KI-Zweck",
-      "description": "Ein bis zwei Sätze, was Ihr Unternehmen mit KI erreichen will.",
+      "title": "Primaerer KI-Zweck",
+      "description": "Ein bis zwei Saetze, was Ihr Unternehmen mit KI erreichen will.",
       "minLength": 10,
       "x-group": "company",
       "x-input": "textarea",
-      "x-example": "Wir entwickeln eine generative KI-Plattform für automatisierte Kundenservice-Kommunikation in regulierten Branchen."
+      "x-example": "Wir entwickeln eine generative KI-Plattform fuer automatisierte Kundenservice-Kommunikation in regulierten Branchen."
     },
     "Ort": {
       "type": "string",
@@ -55,22 +55,22 @@
 
     "GeschäftsführerName": {
       "type": "string",
-      "title": "Geschäftsführung / CEO",
-      "description": "Vor- und Nachname der unterzeichnenden Geschäftsleitung.",
+      "title": "Geschaeftsfuehrung / CEO",
+      "description": "Vor- und Nachname der unterzeichnenden Geschaeftsleitung.",
       "x-group": "governance",
       "x-example": "Dr. Anna Schmidt"
     },
     "AIOfficerName": {
       "type": "string",
       "title": "AI Officer",
-      "description": "Vor- und Nachname der operativ für KI verantwortlichen Person. Kann bei kleinen Teams in Personalunion mit CTO/CPO ausgeübt werden.",
+      "description": "Vor- und Nachname der operativ fuer KI verantwortlichen Person. Kann bei kleinen Teams in Personalunion mit CTO/CPO ausgeuebt werden.",
       "x-group": "governance",
       "x-example": "Marc Hoffmann"
     },
     "DPOName": {
       "type": "string",
       "title": "Datenschutzbeauftragte:r",
-      "description": "Name der oder des Datenschutzbeauftragten. Bei externer Bestellung Kanzlei-/Firmenname zulässig.",
+      "description": "Name der oder des Datenschutzbeauftragten. Bei externer Bestellung Kanzlei- oder Firmenname zulaessig.",
       "x-group": "governance",
       "x-example": "Jasmin Weber (extern, datenschutz-extern.de)"
     },
@@ -84,43 +84,43 @@
     "ISONName": {
       "type": "string",
       "title": "Information Security Officer",
-      "description": "Verantwortlich für Cybersicherheit der KI-Infrastruktur. Bei kleinen Teams oft = CTO.",
+      "description": "Verantwortlich fuer Cybersicherheit der KI-Infrastruktur. Bei kleinen Teams oft = CTO.",
       "x-group": "governance",
       "x-example": "Tom Becker (CTO)"
     },
     "KontaktEmail": {
       "type": "string",
       "format": "email",
-      "title": "Allgemeiner Kontakt für KI-Anfragen",
-      "description": "Adresse, an die Betroffene Beschwerden oder Auskunftsersuchen richten können.",
+      "title": "Allgemeiner Kontakt fuer KI-Anfragen",
+      "description": "Adresse, an die Betroffene Beschwerden oder Auskunftsersuchen richten koennen.",
       "x-group": "governance",
       "x-example": "ai-policy@acme-robotics.com"
     },
 
     "AnwendungsfälleListe": {
       "type": "string",
-      "title": "Anwendungsfälle",
-      "description": "Aufzählung Ihrer wesentlichen KI-Anwendungsfälle. Pro Fall eine Zeile, beginnend mit „– ".",
+      "title": "Anwendungsfaelle",
+      "description": "Aufzaehlung Ihrer wesentlichen KI-Anwendungsfaelle. Pro Fall eine Zeile, beginnend mit einem Bindestrich.",
       "minLength": 5,
       "x-group": "scope",
       "x-input": "textarea",
-      "x-example": "– Generative Chatbot-Antworten im First-Level-Support\n– Predictive Lead Scoring auf historischen CRM-Daten\n– Automatische Kategorisierung eingehender Support-Tickets"
+      "x-example": "- Generative Chatbot-Antworten im First-Level-Support\n- Predictive Lead Scoring auf historischen CRM-Daten\n- Automatische Kategorisierung eingehender Support-Tickets"
     },
     "Risikoklasse": {
       "type": "string",
-      "title": "Höchste Risikoklasse Ihrer KI-Systeme",
-      "description": "Klassifikation gemäß Artikel 6 ff. EU AI Act. Bei mehreren Systemen die jeweils höchste Klasse angeben.",
+      "title": "Hoechste Risikoklasse Ihrer KI-Systeme",
+      "description": "Klassifikation gemaess Artikel 6 ff. EU AI Act. Bei mehreren Systemen die jeweils hoechste Klasse angeben.",
       "enum": ["minimales Risiko", "begrenztes Risiko mit Transparenzpflicht", "hohes Risiko", "kein Hochrisiko-Einsatz, aber Transparenz-Anforderungen"],
       "default": "begrenztes Risiko mit Transparenzpflicht",
       "x-group": "scope"
     },
     "InterneVerbote": {
       "type": "string",
-      "title": "Zusätzlich intern untersagte Anwendungsfälle",
-      "description": "Welche KI-Einsätze schließen Sie über die gesetzlichen Verbote hinaus aus? Beginnen Sie jeden Eintrag mit „– ".",
+      "title": "Zusaetzlich intern untersagte Anwendungsfaelle",
+      "description": "Welche KI-Einsaetze schliessen Sie ueber die gesetzlichen Verbote hinaus aus? Beginnen Sie jeden Eintrag mit einem Bindestrich.",
       "x-group": "scope",
       "x-input": "textarea",
-      "default": "– Bewertung individueller Mitarbeiter-Leistung allein auf KI-Basis\n– Vollständig autonome Entscheidungen über Vertragsabschlüsse mit Endkunden\n– Generative Erstellung politischer oder gesundheitsbezogener Inhalte ohne menschliche Freigabe"
+      "default": "- Bewertung individueller Mitarbeiter-Leistung allein auf KI-Basis\n- Vollstaendig autonome Entscheidungen ueber Vertragsabschluesse mit Endkunden\n- Generative Erstellung politischer oder gesundheitsbezogener Inhalte ohne menschliche Freigabe"
     },
     "ExterneKIAnbieter": {
       "type": "string",
@@ -145,7 +145,7 @@
     },
     "RetentionZeitraum": {
       "type": "string",
-      "title": "Aufbewahrungsfrist für Entscheidungs-Dokumentation",
+      "title": "Aufbewahrungsfrist fuer Entscheidungs-Dokumentation",
       "default": "5 Jahre",
       "x-group": "operations"
     },
@@ -164,20 +164,20 @@
     },
     "MeldekanalIntern": {
       "type": "string",
-      "title": "Interner Meldekanal für KI-Bedenken",
+      "title": "Interner Meldekanal fuer KI-Bedenken",
       "default": "#ai-concerns in Slack oder direkt an den AI Officer",
       "x-group": "operations"
     },
     "KommunikationskanalIntern": {
       "type": "string",
-      "title": "Interner Kanal zur Policy-Veröffentlichung",
+      "title": "Interner Kanal zur Policy-Veroeffentlichung",
       "default": "Confluence und das HR-Onboarding-Portal",
       "x-group": "operations"
     },
     "VeröffentlichungsortExtern": {
       "type": "string",
-      "title": "Externer Veröffentlichungsort",
-      "description": "URL, unter der die Policy für externe Stakeholder verfügbar ist.",
+      "title": "Externer Veroeffentlichungsort",
+      "description": "URL, unter der die Policy fuer externe Stakeholder verfuegbar ist.",
       "default": "https://www.beispiel.com/ai-policy",
       "x-group": "operations"
     },
@@ -185,7 +185,7 @@
     "Version": {
       "type": "string",
       "title": "Versionsnummer",
-      "description": "Semantische Versionierung empfohlen, z. B. „1.0".",
+      "description": "Semantische Versionierung empfohlen, z. B. 1.0",
       "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
       "default": "1.0",
       "x-group": "metadata"
@@ -200,7 +200,7 @@
     "NächsterReview": {
       "type": "string",
       "format": "date",
-      "title": "Nächste planmäßige Überprüfung",
+      "title": "Naechste planmaessige Ueberpruefung",
       "description": "Wird vom Tool automatisch aus Inkrafttreten + ReviewFrequenz berechnet.",
       "x-group": "metadata",
       "x-computed": true
